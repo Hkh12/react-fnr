@@ -1,0 +1,38 @@
+{
+  "name": "react-fnr",
+  "version": "0.1.0",
+  "description": "Fetch with axios and render.",
+  "main": "build/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hkh12/react-fnr.git"
+  },
+  "keywords": [
+    "axios",
+    "react",
+    "hoc",
+    "render",
+    "fetch"
+  ],
+  "author": "Hosein Khansari",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hkh12/react-fnr/issues"
+  },
+  "homepage": "https://github.com/Hkh12/react-fnr#readme",
+  "devDependencies": {
+    "axios": "^0.17.1",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0"
+  },
+  "scripts": {
+    "build": "babel lib -d build",
+    "prepublish": "npm run build"
+  }
+}
