@@ -1,2 +1,2 @@
-# ✨ react-fnr
-Fetch and render with axios and react
+# react-fnr ✨
+Fetch with Axios and render.
