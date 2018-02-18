@@ -1,6 +1,6 @@
 {
   "name": "react-fnr",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fetch with Axios and render",
   "main": "lib/index.js",
   "files": [
@@ -28,7 +28,7 @@
     "react-dom": "^16.2.0",
     "react-proptypes-url-validator": "0.0.1"
   },
-  "author": "Hosein Khansari",
+  "author": "Hosein Khansari <hrk.x11@gmail.com> (hkh12.github.io)",
   "license": "MIT",
   "repository": "https://github.com/hkh12/react-fnr.git",
   "keywords": [
