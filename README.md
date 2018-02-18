@@ -36,7 +36,7 @@ const Example = (props) => {
 ```
 ## Reference
 | name | description | type | default value | required |
-| : |
+| -- | -- | -- | -- | -- |
 | `url` | url to send request to | `string (url)` | - | ✔️ |
 | `method` | request method | `get, post, head, connect, put, patch, delete, options, trace` | 'get' | ❌ |
 | `component` | Component should be rendered after the server response | `PropTypes.element, PropTypes.func` | - | ✔️ |
