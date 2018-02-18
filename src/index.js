@@ -15,12 +15,18 @@ class FNR extends React.Component {
     static propTypes = {
         method: PropTypes.oneOf(['get', 'post']),
         url: UV,
-        component: PropTypes.element.isRequired,
-        loadingComponent: PropTypes.element,
-        errorComponent: PropTypes.element
+        component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
+        loadingComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+        errorComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
     }
     static defaultProps = {
-        method: 'get'
+        method: 'get',
+        loadingComponent: (props) => {
+            return <div>Loading...</div>
+        },
+        errorComponent: (props) => {
+            return <div>Error</div>;
+        }
     }
     componentDidMount() {
         let {method, url, data} = this.props;
@@ -32,7 +38,7 @@ class FNR extends React.Component {
         }).then(res => {
             let newState = {};
             // Always a log is needed for debug 😐
-            console.log(res);
+            // console.log(res);
             newState.loaded = true;
             const {status} = res;
             if (status === 200) {
@@ -46,15 +52,15 @@ class FNR extends React.Component {
         })
     }
     render () {
-        // const {error, data, loaded} = this.state;
-        if (this.state.loaded) {
-            if (!this.state.error) {
-                return this.props.component(this.state.data, this.props.url)
+        const {error, data, loaded} = this.state;
+        if (loaded) {
+            if (!error) {
+                return this.props.component(data, this.props.url)
             } else {
-                return this.props.errorComponent || <div>Error</div>
+                return this.props.errorComponent()
             }
         } else {
-            return this.props.loadingComponent || <div>Loading...</div>
+            return this.props.loadingComponent()
         }
     }
 }
