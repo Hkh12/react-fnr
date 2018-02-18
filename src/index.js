@@ -28,7 +28,7 @@ class FNR extends React.Component {
             return <div>Error</div>;
         }
     }
-    componentDidMount() {
+    fetch = () => {
         let {method, url, data} = this.props;
         let $ = this;
         axios({
@@ -51,8 +51,16 @@ class FNR extends React.Component {
             $.setState(newState)
         })
     }
+    componentDidMount() {
+        this.fetch()
+    }
+    shouldComponentUpdate(nextProps, nextState) {
+        this.forceUpdate();
+        this.fetch()
+        return true;
+    }
     render () {
-        const {error, data, loaded} = this.state;
+        const {loaded, error, data} = this.state;
         if (loaded) {
             if (!error) {
                 return this.props.component(data, this.props.url)
