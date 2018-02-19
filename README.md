@@ -10,6 +10,21 @@ After installing, just run:
 npm start
 ```
 navigate to http://localhost:12210 to see a test.
+## Importing
+Requiring module:
+```javascript
+// es6
+import FNR from 'react-fnr';
+// es5
+const FNR = require('react-fnr');
+```
+Using HTML `script` tag:
+```html
+<!-- Use this for production -->
+<script src="https://cdn.rawgit.com/Hkh12/react-fnr/80815e49/umd/react-fnr.min.js"></script>
+<!-- And this one for development -->
+<script src="https://rawgit.com/Hkh12/react-fnr/master/umd/react-fnr.min.js"></script>
+```
 ## Example Code
 ```javascript
 import React from 'react';
