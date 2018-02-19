@@ -41,6 +41,8 @@ const Example = (props) => {
 | `component` | Component should be rendered after the server response | `PropTypes.element, PropTypes.func` | - | ✔️ |
 | `loadingComponent` | Component should be rendered before the server response (loading message) | `PropTypes.element, PropTypes.func` | - | ❌ |
 | `errorComponent` | Component should be rendered if there was any error in request (if the status code us not 200) | `PropTypes.element, PropTypes.func` | - | ❌ |
+| `config` | axios config for request (url, method and data are overridden!)  | `object` | `{}` | ❌ |
+
 
 ## License
 [MIT](https://github.com/Hkh12/react-fnr/blob/master/LICENSE)
