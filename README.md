@@ -1,13 +1,22 @@
 # react-fnr
 react-fnr is a tool for making http requests with Axios and render the result, error and more.
 ## Installation
+Using npm:
 ```shell
 npm install react-fnr
+```
+Using yarn:
+```shell
+yarn add react-fnr
 ```
 ## Testing
 After installing, just run:
 ```shell
 npm start
+```
+Or if you are using yarn:
+```shell
+yarn run start
 ```
 navigate to http://localhost:12210 to see a test.
 ## Importing

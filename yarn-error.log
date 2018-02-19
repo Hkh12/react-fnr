@@ -1,0 +1,74 @@
+Arguments: 
+  /usr/bin/node8 /usr/share/yarn/bin/yarn.js publish
+
+PATH: 
+  /home/hosein/bin:/usr/local/bin:/usr/bin:/bin:/usr/lib/mit/sbin
+
+Yarn version: 
+  1.3.2
+
+Node version: 
+  8.9.4
+
+Platform: 
+  linux x64
+
+npm manifest: 
+  {
+    "name": "react-fnr",
+    "version": "1.0.0",
+    "description": "Fetch with Axios and render",
+    "main": "lib/index.js",
+    "files": [
+      "css",
+      "es",
+      "lib",
+      "umd"
+    ],
+    "scripts": {
+      "build": "nwb build-react-component",
+      "clean": "nwb clean-module && nwb clean-demo",
+      "start": "nwb serve-react-demo --port 12210",
+      "test": "nwb test-react",
+      "test-coverage": "nwb test-react --coverage",
+      "test-watch": "nwb test-react --server"
+    },
+    "dependencies": {},
+    "peerDependencies": {
+      "react": "16.x"
+    },
+    "devDependencies": {
+      "axios": "^0.17.1",
+      "nwb": "0.21.x",
+      "react": "^16.2.0",
+      "react-dom": "^16.2.0",
+      "react-proptypes-url-validator": "0.0.1"
+    },
+    "author": "Hosein Khansari <hrk.x11@gmail.com> (hkh12.github.io)",
+    "license": "MIT",
+    "repository": "https://github.com/hkh12/react-fnr.git",
+    "keywords": [
+      "react",
+      "axios",
+      "fetch"
+    ]
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: https://registry.yarnpkg.com/react-fnr: You cannot publish over the previously published versions: 1.0.0.
+      at Request.params.callback [as _callback] (/usr/share/yarn/lib/cli.js:62098:18)
+      at Request.self.callback (/usr/share/yarn/lib/cli.js:123085:22)
+      at emitTwo (events.js:126:13)
+      at Request.emit (events.js:214:7)
+      at Request.<anonymous> (/usr/share/yarn/lib/cli.js:124068:10)
+      at emitOne (events.js:116:13)
+      at Request.emit (events.js:211:7)
+      at Gunzip.<anonymous> (/usr/share/yarn/lib/cli.js:123988:12)
+      at Object.onceWrapper (events.js:313:30)
+      at emitNone (events.js:111:20)
