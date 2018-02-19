@@ -1,5 +1,5 @@
 /*!
- * react-fnr v0.1.0
+ * react-fnr v0.1.1
  * MIT Licensed
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -987,28 +987,28 @@ var FNR = (_temp = _class = function (_React$Component) {
             var _this$props = _this.props,
                 method = _this$props.method,
                 url = _this$props.url,
-                data = _this$props.data;
+                data = _this$props.data,
+                config = _this$props.config;
 
-            var $ = _this;
-            __WEBPACK_IMPORTED_MODULE_2_axios___default()({
-                method: method,
+            method = method.toUpperCase();
+            var fullConfig = Object.assign(config, {
                 url: url,
-                data: data
-            }).then(function (res) {
-                var newState = {};
-                // Always a log is needed for debug 😐
-                // console.log(res);
+                data: data,
+                method: method
+            });
+            var newState = {};
+            __WEBPACK_IMPORTED_MODULE_2_axios___default()(fullConfig).then(function (res) {
+                var _res = Object.assign(res, { url: url });
                 newState.loaded = true;
-                var status = res.status;
-
-                if (status === 200) {
-                    newState.error = null;
-                    newState.data = res.data;
-                } else {
-                    newState.data = null;
-                    newState.error = res.status;
-                }
-                $.setState(newState);
+                newState.error = null;
+                newState.data = _res;
+                _this.setState(newState);
+            }).catch(function (error) {
+                var _error = Object.assign(error, { url: url });
+                newState.loaded = true;
+                newState.data = null;
+                newState.error = _error;
+                _this.setState(newState);
             });
         };
 
@@ -1025,8 +1025,9 @@ var FNR = (_temp = _class = function (_React$Component) {
     };
 
     FNR.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
-        this.forceUpdate();
-        this.fetch();
+        if (nextProps !== this.props) {
+            this.fetch();
+        }
         return true;
     };
 
@@ -1038,38 +1039,32 @@ var FNR = (_temp = _class = function (_React$Component) {
 
         if (loaded) {
             if (!error) {
-                return this.props.component(data, this.props.url);
+                return this.props.component(data);
             } else {
-                return this.props.errorComponent();
+                return this.props.errorComponent(error);
             }
         } else {
-            return this.props.loadingComponent();
+            return this.props.loadingComponent(this.props.url);
         }
     };
 
     return FNR;
 }(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component), _class.propTypes = {
-    method: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOf(['get', 'post']),
+    method: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOf(['get', 'post', 'head', 'connect', 'put', 'patch', 'delete', 'options', 'trace']),
     url: UV,
     component: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.element, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func]).isRequired,
     loadingComponent: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.element, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func]),
-    errorComponent: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.element, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func])
+    errorComponent: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.oneOfType([__WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.element, __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.func]),
+    config: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.object
 }, _class.defaultProps = {
     method: 'get',
     loadingComponent: function loadingComponent(props) {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            null,
-            'Loading...'
-        );
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', null);
     },
     errorComponent: function errorComponent(props) {
-        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
-            'div',
-            null,
-            'Error'
-        );
-    }
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span', null);
+    },
+    config: {}
 }, _temp);
 
 
