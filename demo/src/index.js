@@ -7,9 +7,9 @@ class Demo extends Component {
   render() {
     return <div>
       <FNR url='https://api.piorra.ir/wikipedia?key=Test&value=React_(JavaScript_library)' component={
-              (data, url) => {
+              ({data, config}) => {
                   return (<div>
-                      <h1>Fetched from: <span style={{color: '#673ab7'}}>{url}</span></h1>
+                      <h1>Fetched from: <span style={{color: '#673ab7'}}>{config.url}</span></h1>
                       <hr />
                       <h1>{data.result.title}</h1>
                       <p>

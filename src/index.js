@@ -13,62 +13,64 @@ class FNR extends React.Component {
         }
     }
     static propTypes = {
-        method: PropTypes.oneOf(['get', 'post']),
+        method: PropTypes.oneOf(['get', 'post', 'head', 'connect', 'put', 'patch', 'delete', 'options', 'trace']),
         url: UV,
         component: PropTypes.oneOfType([PropTypes.element, PropTypes.func]).isRequired,
         loadingComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-        errorComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func])
+        errorComponent: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+        config: PropTypes.object
     }
     static defaultProps = {
         method: 'get',
         loadingComponent: (props) => {
-            return <div>Loading...</div>
+            return <span></span>
         },
         errorComponent: (props) => {
-            return <div>Error</div>;
-        }
+            return <span></span>;
+        },
+        config: {}
     }
     fetch = () => {
-        let {method, url, data} = this.props;
-        let $ = this;
-        axios({
-            method,
+        let {method, url, data, config} = this.props;
+        method = method.toUpperCase();
+        let fullConfig = Object.assign(config, {
             url,
-            data
-        }).then(res => {
-            let newState = {};
-            // Always a log is needed for debug 😐
-            // console.log(res);
+            data,
+            method
+        });
+        let newState = {};
+        axios(fullConfig).then(res => {
+            let _res = Object.assign(res, {url});
             newState.loaded = true;
-            const {status} = res;
-            if (status === 200) {
-                newState.error = null;
-                newState.data = res.data;
-            } else {
-                newState.data = null;
-                newState.error = res.status;
-            }
-            $.setState(newState)
+            newState.error = null;
+            newState.data = _res;
+            this.setState(newState)
+        }).catch(error => {
+            const _error = Object.assign(error, {url});
+            newState.data = null;
+            newState.error = _error;
+            this.setState(newState)
         })
     }
     componentDidMount() {
         this.fetch()
     }
     shouldComponentUpdate(nextProps, nextState) {
-        this.forceUpdate();
-        this.fetch()
+        if (nextProps !== this.props) {
+            this.fetch();
+        }
         return true;
     }
     render () {
         const {loaded, error, data} = this.state;
         if (loaded) {
             if (!error) {
-                return this.props.component(data, this.props.url)
+                return this.props.component(data)
             } else {
-                return this.props.errorComponent()
+                return this.props.errorComponent(error)
             }
         } else {
-            return this.props.loadingComponent()
+            return this.props.loadingComponent(this.props.url)
         }
     }
 }
