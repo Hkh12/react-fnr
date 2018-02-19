@@ -47,6 +47,7 @@ class FNR extends React.Component {
             this.setState(newState)
         }).catch(error => {
             const _error = Object.assign(error, {url});
+            newState.loaded = true;
             newState.data = null;
             newState.error = _error;
             this.setState(newState)
