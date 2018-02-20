@@ -24,7 +24,7 @@
     "react-proptypes-url-validator": "0.0.1"
   },
   "devDependencies": {
-      "nwb": "0.21.x"
+    "nwb": "0.21.x"
   },
   "author": "Hosein Khansari <hrk.x11@gmail.com> (hkh12.github.io)",
   "license": "MIT",

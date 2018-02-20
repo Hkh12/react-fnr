@@ -1,5 +1,5 @@
 /*!
- * react-fnr v0.1.1
+ * react-fnr v1.0.5
  * MIT Licensed
  */
 (function webpackUniversalModuleDefinition(root, factory) {
