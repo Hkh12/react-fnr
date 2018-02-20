@@ -17,16 +17,14 @@
     "test-coverage": "nwb test-react --coverage",
     "test-watch": "nwb test-react --server"
   },
-  "dependencies": {},
-  "peerDependencies": {
-    "react": "16.x"
-  },
-  "devDependencies": {
+  "dependencies": {
     "axios": "^0.17.1",
-    "nwb": "0.21.x",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-proptypes-url-validator": "0.0.1"
+  },
+  "devDependencies": {
+      "nwb": "0.21.x"
   },
   "author": "Hosein Khansari <hrk.x11@gmail.com> (hkh12.github.io)",
   "license": "MIT",
