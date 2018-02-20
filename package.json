@@ -1,6 +1,6 @@
 {
   "name": "react-fnr",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Fetch with Axios and render",
   "main": "lib/index.js",
   "files": [
