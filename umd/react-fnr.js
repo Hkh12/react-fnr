@@ -1,5 +1,5 @@
 /*!
- * react-fnr v1.0.5
+ * react-fnr v1.0.7
  * MIT Licensed
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -1025,7 +1025,7 @@ var FNR = (_temp = _class = function (_React$Component) {
     };
 
     FNR.prototype.shouldComponentUpdate = function shouldComponentUpdate(nextProps, nextState) {
-        if (nextProps !== this.props) {
+        if (nextProps.url !== this.props.url) {
             this.fetch();
         }
         return true;

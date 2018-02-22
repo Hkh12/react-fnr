@@ -57,7 +57,7 @@ class FNR extends React.Component {
         this.fetch()
     }
     shouldComponentUpdate(nextProps, nextState) {
-        if (nextProps !== this.props) {
+        if (nextProps.url !== this.props.url) {
             this.fetch();
         }
         return true;
